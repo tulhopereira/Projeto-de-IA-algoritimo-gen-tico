@@ -29,8 +29,8 @@ class GeneticAlgorithmTSP:
         self.genetic_diversity_values = []
 
         # Mapping between city names and characters
-        self.city_map = OrderedDict((char, city) for char, city in zip(range(32, 54), graph.vertices()))
-        self.city_mapping = {char: city for char, city in zip(range(32, 54), city_names)}
+        self.city_map = OrderedDict((char, city) for char, city in zip(range(32, 59), graph.vertices()))
+        self.city_mapping = {char: city for char, city in zip(range(32, 59), city_names)}
         # I don't know why this happens
         #self.city_map[32], self.city_map[33] = self.city_map[33], self.city_map[32]
 
