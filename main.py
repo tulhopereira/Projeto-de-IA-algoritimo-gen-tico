@@ -1,3 +1,4 @@
+import time
 import re
 from graph import Graph
 from genetic_algorithm_tsp import GeneticAlgorithmTSP
@@ -5,6 +6,8 @@ from plot import plot_tsp_path, plot_genetic_diversity
 from collections import OrderedDict
 
 def main():
+    start_time = time.time()  # Inicia a contagem do tempo
+    
     # read cities from file
     with open('cities.txt', 'r') as file:
         cities_data = file.read()
@@ -36,10 +39,10 @@ def main():
     ga_tsp_germany = GeneticAlgorithmTSP(
         graph=germany_graph,
         city_names=[city for city, _, _ in cities], # pass the list of city names
-        generations=200,
-        population_size=800,
-        tournament_size=5,
-        mutationRate=0.1,
+        generations=1000,
+        population_size=300,
+        tournament_size=7,
+        mutationRate=0.5,
         fitness_selection_rate=0.5,
     )
 
@@ -58,6 +61,9 @@ def main():
 
     # create a list of coordinates for the fittest path
     coordinates_list = [coordinates_dict[city] for city in fittest_path]
+
+    end_time = time.time()  # Finaliza a contagem do tempo
+    print(f"Tempo de simulação: {end_time - start_time:.2f} segundos")
 
     # plot the TSP path with nodes, edges, and cost annotation
     plot_tsp_path(fittest_path, coordinates_list, 'brasil.jpeg', path_cost)
